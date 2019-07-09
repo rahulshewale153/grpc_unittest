@@ -1,0 +1,9 @@
+development:
+  driver: mysql
+  open: root:root@tcp(localhost:3306)/article-get-post?parseTime=true
+
+production:
+  driver: mysql
+  open: root:root@tcp(localhost:3306)/article-get-post?parseTime=true
+
+

@@ -1,0 +1,40 @@
+/*File generate command: protoc -I . comment.proto --go_out=plugins=grpc:.*/
+syntax = "proto3";
+package comment_grpc;
+
+message Comment{
+    string nickname=1;
+    int64 id=2;
+    int64 articleid=3;
+    string commentcreationdate=4;
+    string content=5;
+}
+
+message CommentList{
+    repeated Comment comments =1;
+}
+message AddComment {
+    string nickname=1;
+    int64 articleid=2;
+    string commentcreationdate=3;
+    string content=4;
+}
+message CommentResponse {
+    int32 status=1;
+    bool success =2;
+    string message=3;
+    repeated Comment comments =4;
+}
+message SearchComment{
+    int64 id=1;
+}
+message SearchArticleComment{
+    int64 id=1;
+}
+message void {}
+service Comments{
+    rpc Commentlist(void) returns (CommentResponse){}
+    rpc Addcomment(AddComment) returns(CommentResponse){}
+    rpc Searchcomment(SearchComment) returns(CommentResponse){}
+    rpc Searcharticlecomment(SearchArticleComment) returns(CommentResponse){}
+}

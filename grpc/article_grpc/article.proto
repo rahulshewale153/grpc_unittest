@@ -1,0 +1,38 @@
+/*File generate command: protoc -I . article.proto --go_out=plugins=grpc:.*/
+syntax = "proto3";
+package article_grpc;
+
+message Article{
+    string nickname=1;
+    uint64 id=2;
+    string title=3;
+    string articlecreationdate=4;
+    string content=5;
+}
+
+message ArticleList{
+    repeated Article articles =1;
+}
+message AddArticle {
+    string nickname=1;
+    string title=3;
+    string articlecreationdate=4;
+    string content=5;   
+}
+message ArticleResponse {
+    int32 status=1;
+    bool success =2;
+    string message=3;
+    repeated Article articles =4;
+}
+message SearchArticle{
+    int64 id=1;
+}
+message void {}
+service Articles{
+    rpc Articlelist(void) returns (ArticleResponse){}
+    rpc Addarticle(AddArticle) returns(ArticleResponse){}
+    rpc Searcharticle(SearchArticle) returns(ArticleResponse){}
+
+
+}

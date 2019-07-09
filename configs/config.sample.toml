@@ -1,0 +1,10 @@
+#server port
+port="8081"
+siteurl="http://localhost:8081"
+environment=0 #production=1 or developement=0
+databaseserver="localhost"
+databasename="article-get-post"
+username="root"
+password="root"
+handler="api" #grpc , api , cli
+logfile="/home/rahul/goworkspace/src/grpc_unittest/logs/"
